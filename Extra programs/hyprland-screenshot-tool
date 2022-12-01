@@ -1,0 +1,50 @@
+#!/bin/bash
+#I'm not very good at Englih lol.
+FORMAT="png"
+NAME="Screenshot from $(date "+%d-%m-%y %H:%M:%S")"
+PICTPATH="$HOME/Pictures/Screenshots/"
+OUTPUT="$NAME.$FORMAT"
+Ver="0.1"
+help=0
+
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+NORMAL='\033[0m'
+
+mkdir -p ${PICTPATH}
+
+function list_geometry () {
+	[ "$2" = with_description ] && local append="\t\(.title)" || local append=
+    if [ "$1" = focused ]; then
+        hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])'$append'"'
+    else
+        hyprctl -j clients | jq -r '.[] | select(.workspace.id | contains('$(hyprctl -j monitors | jq -r 'map(.activeWorkspace.id) | join(",")')')) | "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])'$append'"'
+    fi
+}
+
+FOCUSED=`list_geometry focused`
+
+case $1 in
+  '-S' ) grim "${PICTPATH}${OUTPUT}" ;;
+  ''| '-A' ) grim -g "$(slurp -d)" "${PICTPATH}${OUTPUT}" ;;
+  '-W' ) grim -g "${FOCUSED}" "${PICTPATH}${OUTPUT}" ;;
+  * | '-h') help=1
+  			    echo -e "Hyprland screenshot tool ver${Ver} by ${RED}Red${PURPLE}Nekod${BLUE}err${NORMAL}"
+            echo ""
+            echo -e "A screenshot of the selected area will be taken and it will be named ${BLUE}'${OUTPUT}'${NORMAL} and saved to ${PURPLE}'${PICTPATH}'${NORMAL}."
+            echo ""
+            #echo -e "If you want to change the path/name/format then after the '-S/-A/-W' argument specify in the correct order: ${BLUE}'file_path/[space]file_name[space]format'${NORMAL} For example ${PURPLE}'hyprland-screenshot-tool -A /home/usrname/Pictures/ 12 png'${NORMAL} ${RED}(the last '/' in the path is required)${NORMAL}. If you not use the '-S/-A/-W' arguments then specify the ${RED}'-c'${NORMAL} argument."
+            echo ""
+            echo "'-S' or empty to take a screenshot of the entire screen."
+            echo "'-A' to take a screenshot of the selected area."
+            echo "'-W' to take a screenshot of the focused window."
+            #echo "'-c' to change path/name/format if you not use '-S/-A/-W' argument"
+            echo "'-h'available arguments." ;;
+esac
+if [ "$help" = 0 ];
+then
+	wl-copy -t image/"${FORMAT}" < "${PICTPATH}${OUTPUT}"
+	notify-send "Screenshot" "File saved as <i>'$OUTPUT'</i> and copied to the clipboard." -i "${PICTPATH}${OUTPUT}"
+fi
+

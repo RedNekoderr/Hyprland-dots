@@ -1,0 +1,16 @@
+lux
+light
+slurp
+grim
+wl-copy
+## wayland output dmabuf for screen share
+space mono nerd font
+mako
+hyprland
+hyprpaper
+kitty
+org.telegram.desktop
+de.shorsh.discord-screenaudio
+wofi
+pamixer
+playerctl
