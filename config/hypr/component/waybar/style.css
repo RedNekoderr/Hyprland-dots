@@ -1,0 +1,199 @@
+* {
+    font-family: FiraCode;
+    font-size: 13px;
+    font-weight: bolder;
+}
+
+#clock,
+#battery,
+#cpu,
+#backlight,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#language,
+#custom-dynamic_pill {
+    padding: 0 10px;
+    border-radius: 15px;
+    background: #11111b;
+    color: #b4befe;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+#custom-dynamic_pill label {
+    color: #11111b;
+}
+
+#custom-dynamic_pill.paused label {
+    color: 	#89b4fa ;
+    font-weight: bolder; 
+}
+
+
+window#waybar {
+    background-color: transparent;
+}
+
+#custom-dynamic_pill.normal{
+    background: rgb(148,226,213);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+    font-weight: bolder;
+    color: #fff;
+}
+#custom-dynamic_pill.critical{
+    background: rgb(235,160,172);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+    font-weight: bolder;
+    color: #fff;
+}
+
+#custom-dynamic_pill.playing{   
+    transition: background 0.5s, color 0.5s;
+    background: rgb(137,180,250);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+    font-weight: bold;
+    color: #fff ;
+}
+
+#custom-dynamic_pill.paused {
+    transition: background 0.5s, color 0.5s;
+    background: #11111b ;
+    font-weight: bolder;
+    color: #b4befe;
+}
+
+#workspaces button label{
+    color: 	#89b4fa ;
+    font-weight: bolder;
+}
+
+#workspaces{
+    background-color: transparent;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 25px;
+}
+
+#workspaces button{
+    background-color: #11111b ;
+    border-radius: 15px;
+    margin-right: 10px;
+    padding: 10px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+    font-weight: bolder;
+    color: 	#89b4fa ;
+    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
+}
+
+#workspaces button.active{
+    padding-right: 20px;
+    padding-left: 20px;
+    background: rgb(203,166,247);
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#custom-cycle_wall{
+    background: rgb(245,194,231);
+    color: #fff;
+    font-weight:  bolder;
+    border-radius: 15px;
+}
+
+#clock label{
+    color: #11111b;
+    font-weight:  bolder;
+    font-size: 20px;
+}
+
+#clock {
+    background: rgb(205,214,244);
+    margin-right: 25px;
+    color: #fff ;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+    
+    font-size: 15px;
+    padding-top: 5px;
+    padding-right: 21px;
+    font-weight: bolder;
+    padding-left: 20px;
+}
+
+#battery.charging, #battery.plugged {
+    background-color: #94e2d5 ;
+    color: #11111b;
+}
+
+#battery {
+    background-color: #11111b;
+    color:#a6e3a1;
+    font-weight: bolder;
+    font-size: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #f9e2af;
+        color:#96804e;
+    }
+}
+
+
+
+#battery.critical:not(.charging) {
+    background-color:  #f38ba8;
+    color:#bf5673;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu label{
+    color:#89dceb;
+}
+
+#cpu {
+    background: rgb(30,30,46);
+    background: radial-gradient(circle, rgba(30,30,46,1) 30%, rgba(17,17,27,1) 100%); 
+    color: 	#89b4fa;
+}
+
+#backlight {
+    color: #90b1b1;
+}
+
+#pulseaudio {
+    background-color:  	#fab387;
+    color: #bf7d54;
+    font-weight: bolder;
+}
+
+#pulseaudio.muted {
+    background-color: #90b1b1;
+}
+
+#tray {
+    background-color: #2980b9;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+*.hover {
+    background-color: inherit;
+}
