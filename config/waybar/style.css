@@ -1,166 +1,136 @@
-@import "mocha.css";
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Monocraft;
-    font-size: 13px;
-}
-
-window#waybar {
-    background-color: #1e1e2e;
-    opacity: 0.8;
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
-}
-
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-}
-
-button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-
-#workspaces button {
-    padding: 0 5px; 
-    border-radius: 5em / 5em;
-    background-color: @surface0;
-    color: @peach;
-    margin: 2px;
-    font-weight: bold;
-}
-
-#workspaces button.active {
-    background-color: @pink;
-    transition-property: background-color;
-    transition-duration: .2s;
+    font-family: FiraCode;
 }
 
 #clock,
 #battery,
 #cpu,
-#memory,
-#temperature,
-#network,
+#backlight,
 #pulseaudio,
-#keyboard-state,
-#bluetooth,
 #tray,
-#mpd,
 #language,
-#backlight {
-    padding: 0 10px;
-    color: @peach;
-    background-color: @surface0; 
-    font-weight: bold;
+#workspaces,
+#network,
+#custom-sep {
+    background: #161320;
+    color: #E2E0EC;
+    border-radius: 10px;
+    border: 4px solid #575268;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-#memory {
-   color: @yellow;
+#battery {
+    border-radius: 10px 0 0 10px;
+    border-right: 0;
+    padding-left: 10px;
+    padding-right: 5px;
 }
 
-#tray {
-    border-radius: 5em / 5em;
+#language,
+#cpu,
+#backlight,
+#pulseaudio,
+#custom-sep {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
-#window,
-#workspaces {
-    margin: 2px 4px;
+#network {
+    margin-right: 15px;
+    padding-right: 10px;
+    border-radius: 0 10px 10px 0;
+    border-left: 0;
+    color: #96CDFB;
+}
+
+#custom-sep {
+    font-size: 22px;
+    color: #A8C5E6;
+}
+
+window#waybar {
     background-color: transparent;
-    font-weight:bold;
-    border-radius: 5em / 5em;
-    padding: 0 10px;
-    color: @peach;
 }
 
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+#workspaces {
+    padding-right: 2px;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+#workspaces button {
+    border: 0;
+    color: #575268;
+    border-radius: 0px;
+    font-weight: bolder;
+    transition: color 0.3s ease-in-out;
+}
+
+#workspaces button.active{
+    color: #E2E0EC;
+    transition: all 0.3s ease-in-out;
+}
+
+#clock label{
+    color: #161320;
+    font-weight:  bolder;
+    font-size: 20px;
 }
 
 #clock {
-  border-top-right-radius: 5em 5em; 
-  border-bottom-right-radius: 5em 5em;
-  color: @sky;   
+    margin-left: 15px;
+    font-size: 15px;
+    padding-top: 5px;
+    padding-right: 21px;
+    font-weight: bolder;
+    padding-left: 20px;
 }
 
-
-@keyframes blink {
-    to {
-        background-color: #9399b2;
-        color: #000000;
-    }
+#battery.charging {
+    color: #ECE0A8;
 }
 
-label:focus {
-    background-color: #000000;
+#battery {
+    color: #AAC5A0;
+    font-weight: bolder;
 }
 
+#battery.warning:not(.charging) {
+    color: #ECE0A8;
+}
 
-#network.disconnected {
-    background-color: #f53c3c;
+#battery.critical:not(.charging) {
+    color: #E97193;
+}
+
+#cpu {
+    font-weight: bolder;
+    color:#DFA7E7;
+}
+
+#backlight {
+    color: #A8E5E6;
 }
 
 #pulseaudio {
-    border-top-left-radius: 5em 5em;
-    border-bottom-left-radius: 5em 5em;
-    color: @pink;
+    color: #7ab0df;
+    font-weight: bolder;
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    color: #E97193;
 }
 
-#temperature.critical {
-    background-color: #eb4d4b;
+#tray {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 25px;
 }
 
-#temperature {
-   color: @green;
-}
-
-#keyboard-state {
-    padding: 0 0px;
-    min-width: 16px;
-    color: @mauve;
+#workspaces button:hover {
+    background: #101317;
 }
 
 
-#keyboard-state > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
-}
