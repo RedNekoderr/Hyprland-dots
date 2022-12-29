@@ -16,8 +16,8 @@
     color: #E2E0EC;
     border-radius: 10px;
     border: 4px solid #575268;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 12px;
+    margin-bottom: 5px;
 }
 
 #battery {
@@ -40,7 +40,7 @@
 }
 
 #network {
-    margin-right: 15px;
+    margin-right: 12px;
     padding-right: 10px;
     border-radius: 0 10px 10px 0;
     border-left: 0;
@@ -63,14 +63,18 @@ window#waybar {
 #workspaces button {
     border: 0;
     color: #575268;
-    border-radius: 0px;
     font-weight: bolder;
-    transition: color 0.3s ease-in-out;
+    transition: all 0.2s ease;
 }
 
 #workspaces button.active{
     color: #E2E0EC;
-    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:hover {
+    box-shadow: #161320 0 0 0 0px;
+    background: #101317;
+    text-shadow: #e2e0ec 0 0 0px;
 }
 
 #clock label{
@@ -80,7 +84,7 @@ window#waybar {
 }
 
 #clock {
-    margin-left: 15px;
+    margin-left: 12px;
     font-size: 15px;
     padding-top: 5px;
     padding-right: 21px;
@@ -128,9 +132,4 @@ window#waybar {
     padding-right: 10px;
     margin-left: 25px;
 }
-
-#workspaces button:hover {
-    background: #101317;
-}
-
 

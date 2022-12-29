@@ -4,6 +4,7 @@ if status is-interactive
 	starship init fish | source &
 	thefuck --alias | source &
 	~/.config/fish/tty.sh &
+	export TERM=kitty &
 end
 
 
@@ -69,12 +70,9 @@ export VISUAL="vim"
 export EDITOR="$VISUAL"
 
 # Term
-switch "$TERM_EMULATOR"
-case '*kitty*'
-	export TERM='xterm-kitty'
-case '*'
-	export TERM='xterm-256color'
-end
+export TERM='kitty'
+export VISUAL='nvim'
+export EDITOR='nvim'
 
 
 # User abbreviations
