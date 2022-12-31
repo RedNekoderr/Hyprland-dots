@@ -1,0 +1,12 @@
+light
+slurp
+grim
+wl-copy
+space mono nerd font
+dunst
+hyprland
+hyprpaper
+kitty
+wofi
+pamixer
+playerctl
