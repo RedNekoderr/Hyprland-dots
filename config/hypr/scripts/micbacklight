@@ -1,0 +1,12 @@
+#! /bin/bash
+# A simple script that changes the brightness of the microphone indicator on window managers on huawei laptops
+#stateraw=$(light -Gs sysfs/leds/platform::micmute)
+#state=${stateraw%.*}
+stateraw=$(pamixer --default-source --get-volume-human)
+state=$(echo $stateraw | rev | cut -c 2- | rev)
+if [[ $state -eq "mute" ]]; then
+	light -Ss sysfs/leds/platform::micmute 0
+else
+	light -Ss sysfs/leds/platform::micmute 100
+fi
+

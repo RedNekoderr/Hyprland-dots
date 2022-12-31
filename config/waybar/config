@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     // "width"': 1280, // Waybar width
-    "modules-left": ["clock", "tray"],
+    "modules-left": ["clock", "custom/playerctl", "tray"],
     "modules-center": ["wlr/workspaces"],
     "modules-right": ["battery", "custom/sep", "pulseaudio", "custom/sep", "cpu", "custom/sep", "hyprland/language","backlight", "network"],
      "wlr/workspaces": {
@@ -19,9 +19,22 @@
         "format-en": "🇺🇸",
         "format-ru": "🇷🇺",
     },
-   // "bluetooth": {
+   //  "bluetooth": {
    //   "on-click": "blueman-manager"      
    // },
+     "custom/playerctl": {
+    "format": "{icon}  <span>{}</span>",
+    "return-type": "json",
+    "max-length": 35,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} ~ {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click-middle": "playerctl play-pause",
+    "on-click": "playerctl previous",
+    "on-click-right": "playerctl next",
+    "format-icons": {
+      "Playing": "<span foreground='#94e2d5'></span>",
+      "Paused": "<span foreground='#f38ba8'></span>"
+    }
+  },
     "tray": {
         "icon-size": 21,
         "spacing": 10
@@ -67,7 +80,8 @@
         "format-wifi": " ",
         "format-ethernet": " {ipaddr}/{cidr}",
         "format-disconnected": "睊 ",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+	"tooltip": false,
     },
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float

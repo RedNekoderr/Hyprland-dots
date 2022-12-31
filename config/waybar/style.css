@@ -11,13 +11,21 @@
 #language,
 #workspaces,
 #network,
-#custom-sep {
+#custom-sep,
+#custom-playerctl {
     background: #161320;
     color: #E2E0EC;
     border-radius: 10px;
     border: 4px solid #575268;
     margin-top: 12px;
     margin-bottom: 5px;
+}
+
+#custom-playerctl {
+    margin-left: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
 }
 
 #battery {
