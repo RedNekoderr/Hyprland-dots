@@ -4,6 +4,7 @@ if status is-interactive
 	starship init fish | source &
 	thefuck --alias | source &
 	~/.config/fish/tty.sh &
+	export TERM=kitty &
 end
 
 

@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+
+
+currentWall=$(ls $HOME/.config/wallpapers/backgrounds/ | wofi --show dmenu)
+
+rm $HOME/.config/wallpapers/current/$(ls $HOME/.config/wallpapers/current/)
+cp $HOME/.config/wallpapers/backgrounds/$currentWall $HOME/.config/wallpapers/current/
+
+rm $HOME/.config/hypr/hyprpaper.conf
+touch $HOME/.config/hypr/hyprpaper.conf
+echo "preload = /home/redneko/.config/wallpapers/current/$(ls $HOME/.config/wallpapers/current/)" >> $HOME/.config/hypr/hyprpaper.conf
+echo "wallpaper = eDP-1,/home/redneko/.config/wallpapers/current/$(ls $HOME/.config/wallpapers/current/)" >> $HOME/.config/hypr/hyprpaper.conf
+echo "ipc = off" >> $HOME/.config/hypr/hyprpaper.conf
+
+wal -i $HOME/.config/wallpapers/current/$(ls $HOME/.config/wallpapers/current)
+cp $HOME/.cache/wal/colors-kitty.conf $HOME/.config/kitty/kitty-theme.conf
+echo "background_opacity 0.85" >> $HOME/.config/kitty/kitty-theme.conf
+
+rm $HOME/.config/hypr/colors
+touch $HOME/.config/hypr/colors
+echo "$(sed 's/#//g' $HOME/.cache/wal/colors-hyprland)" >> $HOME/.config/hypr/colors
+
+hyprctl reload
+
+killall hyprpaper | killall waybar && waybar | hyprpaper

@@ -1,3 +1,5 @@
+@import "/home/redneko/.cache/wal/colors-waybar.css";
+
 * {
     font-family: FiraCode;
 }
@@ -13,10 +15,10 @@
 #network,
 #custom-sep,
 #custom-playerctl {
-    background: #161320;
-    color: #E2E0EC;
+    background: @background;
+    color: @foreground;
     border-radius: 10px;
-    border: 4px solid #575268;
+    border: 4px solid @foreground;
     margin-top: 12px;
     margin-bottom: 5px;
 }
@@ -52,12 +54,12 @@
     padding-right: 10px;
     border-radius: 0 10px 10px 0;
     border-left: 0;
-    color: #96CDFB;
+    color: @color5;
 }
 
 #custom-sep {
     font-size: 22px;
-    color: #A8C5E6;
+    color: @foreground;
 }
 
 window#waybar {
@@ -70,13 +72,13 @@ window#waybar {
 
 #workspaces button {
     border: 0;
-    color: #575268;
+    color: @color6;
     font-weight: bolder;
     transition: all 0.2s ease;
 }
 
 #workspaces button.active{
-    color: #E2E0EC;
+    color: @foreground;
 }
 
 #workspaces button:hover {
@@ -86,7 +88,7 @@ window#waybar {
 }
 
 #clock label{
-    color: #161320;
+    color: @foreground;
     font-weight:  bolder;
     font-size: 20px;
 }
